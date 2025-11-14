@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS 14: Vida Submarina</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #48cae4;
+            --light-color: #caf0f8;
+            --dark-color: #03071e;
+            --text-color: #2b2d42;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            background-color: var(--white);
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        section {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .image-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 1rem;
+            background-color: var(--light-color);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .infographic-placeholder {
+            background-color: var(--accent-color);
+            border: 3px dashed var(--dark-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .infographic-placeholder:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.02);
+        }
+
+        .infographic-placeholder p {
+            color: var(--dark-color);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .kahoot-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .kahoot-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .reflection-box {
+            background-color: var(--light-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        .resources-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--dark-color);
+            color: var(--white);
+            margin-top: 2rem;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                gap: 1rem;
+            }
+            
+            .avatar-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for the avatar */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .avatar-container img {
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="avatar-container">
+                    <img src="https://i.postimg.cc/hjKjzg19/imagen-2025-11-11-144405724.png" alt="Avatar ODS 14">
+                </div>
+                <h1>ODS 14: Vida Submarina</h1>
+                <div class="slogan">Protejamos los océanos, nuestra fuente de vida</div>
+            </div>
+        </header>
+
+        <section>
+            <h2>Explicación del ODS 14</h2>
+            <p>El Objetivo de Desarrollo Sostenible 14 busca conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos para el desarrollo sostenible. Este objetivo es fundamental porque los océanos cubren más del 70% de la superficie terrestre y son la mayor parte del ecosistema planetario.</p>
+            <p>Este ODS trata de resolver problemas críticos como la contaminación marina, la sobrepesca, la acidificación de los océanos y la pérdida de biodiversidad marina. Busca proteger los ecosistemas marinos, reducir la contaminación marina, gestionar de manera sostenible los recursos pesqueros y aumentar la resiliencia de las comunidades costeras frente al cambio climático.</p>
+            <p>Es especialmente importante en el mundo porque los océanos regulan el clima, proporcionan alimento a millones de personas y son una fuente vital de oxígeno. En Colombia, este objetivo es crucial debido a nuestras extensas costas en el Caribe y el Pacífico, donde la pesca artesanal, el turismo y la biodiversidad marina son fundamentales para muchas comunidades.</p>
+        </section>
+
+        <section>
+            <h2>Investigación con IA</h2>
+            <h3>Logros alcanzados hasta ahora:</h3>
+            <ol>
+                <li>El área clave global de biodiversidad marina cubierta por zonas protegidas ha aumentado del 30.5% en 2000 al 46.0% en 2019, mostrando un progreso significativo en la protección de ecosistemas marinos.</li>
+                <li>97 países han firmado el Acuerdo sobre Medidas del Estado Rector del Puerto, el primer acuerdo internacional vinculante sobre la pesca ilegal y no reglamentada, lo que representa un avance importante en la gobernanza marítima global.</li>
+                <li>Se ha logrado una drástica disminución de la actividad humana en los océanos durante la pandemia de COVID-19, lo que permitió observar cómo los ecosistemas marinos pueden recuperarse cuando se reduce la presión humana.</li>
+            </ol>
+            
+            <h3>Cosas negativas actuales:</h3>
+            <ol>
+                <li>La acidificación de los océanos continúa amenazando el medio marino y los servicios derivados del ecosistema, con un aumento previsto del 100-150% de la acidez para 2100, lo que afectaría a la mitad de toda la vida marina.</li>
+                <li>La contaminación plástica sigue siendo un problema grave, con millones de toneladas de plástico que terminan en los océanos cada año, afectando la fauna marina y la cadena alimentaria.</li>
+                <li>La sobrepesca persiste en muchas regiones, poniendo en riesgo la sostenibilidad de los recursos pesqueros y la seguridad alimentaria de millones de personas.</li>
+            </ol>
+            
+            <h3>Propuesta innovadora para Colombia:</h3>
+            <p>Implementar un sistema de "Guardianes Marinos Comunitarios" en las costas colombianas, donde pescadores locales, turistas y estudiantes sean capacitados para monitorear la salud de los ecosistemas marinos, reportar actividades ilegales y participar en programas de restauración de arrecifes y manglares. Este programa podría integrarse con aplicaciones móviles para recopilar datos en tiempo real y crear una red nacional de vigilancia ciudadana marina.</p>
+        </section>
+
+        <section>
+            <h2>Actividad de Gamificación</h2>
+            <p>¡Pon a prueba tus conocimientos sobre la vida submarina con nuestro mini-juego interactivo!</p>
+            <p>Participa en nuestro Kahoot especial sobre el ODS 14 y descubre cuánto sabes sobre la conservación de los océanos.</p>
+            <div class="kahoot-link">
+                <img src="https://i.postimg.cc/KYVnT080/QR-Kahoot.jpg" alt="kahoot">
+            </div>
+            <p>Invita a tus amigos y compite para saber quien sabe mas sobre la vida submarina. ¡Aprende mientras te diviertes!</p>
+        </section>
+
+        <section>
+            <h2>TIC Colaborativa</h2>
+            <div class="infographic-placeholder">
+                <img src="https://i.postimg.cc/RhyJny0d/Infografia.png" alt="Infografia">
+            </div>
+        </section>
+
+        <section>
+            <h2>Reflexión Final</h2>
+            <div class="reflection-box">
+                <p>Al trabajar este ODS, aprendí que los océanos no son solo un recurso económico, sino un sistema vital que sostiene la vida en el planeta. Descubrí que la contaminación plástica, la sobrepesca y la acidificación de los océanos son problemas urgentes que requieren acción inmediata.</p>
+                <p>Y como ser humano tambien puedo contribuir a cumplir este objetivo de varias manera, como por ejemplo reduciendo mi consumo de plástico, apoyando productos pesqueros sostenibles, podria ayudar a limpiar en las playas cada que se me haga posible y dando información sobre la importancia de los océanos. También puedo influir en mi entorno el promover prácticas responsables hacia el mar y apoyando iniciativas locales de conservación.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Recursos Visuales</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/d1MQMC0N/vida-maritima.png" alt="Icono oficial ODS 14">
+                    <div class="image-caption">Icono oficial del ODS 14: Vida Submarina</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/rwnzHzx8/1.png" alt="Coral vibrante">
+                    <div class="image-caption">Ecosistema coralino vibrante en los océanos</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/XYpnpLBM/2.png" alt="Tortuga atrapada en red">
+                    <div class="image-caption">Tortuga marina atrapada en redes de pesca</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/90Ljfwcv/3.png" alt="Pescador local">
+                    <div class="image-caption">Pescador trabajando con redes sostenibles</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/Gpvwy5cj/4.png" alt="grupo de personas">
+                    <div class="image-caption">Campañas de limpieza de playas</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.postimg.cc/gjQN4Gsw/5.png" alt="Mapa">
+                    <div class="image-caption">Mapa/infografía del ODS 14 de la ONU</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Proyecto ODS 14 - Vida Submarina | Institución Educativa Diego Echavarría Misas</p>
+        <p>Comprometidos con la conservación de nuestros océanos para un futuro sostenible</p>
+        <p>Creado por Samuel Tamayo Londoño</p>
+    </footer>
+</body>
+</html>
